@@ -1,0 +1,21 @@
+Pon aquí las fotos del restaurante en .jpg con estos nombres exactos.
+Si falta alguna, se usa una foto de propuesta (Wikimedia Commons). Si tampoco hay foto de propuesta, se muestra un fondo cálido.
+Cuando pongas aquí las fotos reales del restaurante, reemplazan automáticamente a las de propuesta.
+
+LO MÁS IMPORTANTE (sitio principal)
+  fachada.jpg      Foto de portada: la fachada o el interior de la casona (horizontal)
+  interior.jpg     Interior: la fuente, los espejos o los relojes
+  cafe.jpg         Café de olla
+  chilaquiles.jpg  Chilaquiles
+  rancheros.jpg    Huevos rancheros
+  enchiladas.jpg   Enchiladas
+  gorditas.jpg     Gorditas
+  flautas.jpg      Flautas
+
+MENÚ (opcionales)
+  desayunos.jpg  huevos.jpg  rajas.jpg  chile-verde.jpg  mexicana.jpg  molletes.jpg
+  quesadillas.jpg  higado.jpg  comida-dia.jpg
+  vegetariano.jpg  nopales.jpg  americano.jpg  jugo.jpg  agua.jpg
+
+Tip: usa fotos de su Instagram o Facebook, o tómalas tú en el restaurante.
+Tamaño recomendado: unos 1200 px de ancho.
