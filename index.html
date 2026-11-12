@@ -64,30 +64,29 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 @media(max-width:760px){.links{display:none}.marca img{height:48px}nav .wrap{height:66px}}
 
 /* Portada */
-.hero{position:relative;min-height:calc(100svh - 80px);display:flex;align-items:center;padding:60px 0 80px;color:#fff;overflow:hidden}
+.hero{position:relative;min-height:calc(100svh - 80px);display:flex;align-items:center;padding:56px 0 64px;overflow:hidden}
 .hero .bg{position:absolute;inset:-4%;animation:kenburns 24s ease-in-out infinite alternate}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,13,.86) 0%,rgba(10,18,13,.62) 42%,rgba(10,18,13,.12) 100%)}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,13,.35) 0%,rgba(10,18,13,.1) 55%,rgba(10,18,13,0) 100%)}
 .hero .wrap{position:relative;z-index:2;width:100%}
-.hero .contenido{max-width:560px}
-.logo-card{display:inline-block;margin:0 0 18px -14px}
-.logo-card img{width:min(440px,80vw);height:auto;filter:drop-shadow(0 4px 14px rgba(0,0,0,.55)) drop-shadow(0 0 2px rgba(0,0,0,.4))}
-.lugar{display:inline-block;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);margin-bottom:12px}
-.hero h2{font-size:clamp(2rem,4.4vw,3.2rem);max-width:15ch;text-shadow:0 4px 24px rgba(0,0,0,.35)}
-.hero h2 em{font-style:normal;color:#ff4b4c}
-.hero .franja{width:120px;margin:20px 0}
-.hero p{font-size:1.12rem;color:rgba(255,255,255,.9);max-width:30em;margin-bottom:26px}
-.hero .btn-linea{background:#fff;box-shadow:none}
+.panel{max-width:520px;background:#fff;border-radius:34px;padding:30px 40px 34px;box-shadow:0 50px 90px -40px rgba(0,0,0,.65)}
+.panel .logo{display:block;width:100%;max-width:380px;height:auto;margin:0 auto 6px}
+.lugar{display:block;font-size:.78rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--verde-dk);margin-bottom:10px}
+.hero h2{font-size:clamp(1.9rem,3.6vw,2.6rem);max-width:15ch}
+.hero h2 em{font-style:normal;color:var(--rojo)}
+.hero .franja{width:110px;margin:18px 0}
+.hero p{font-size:1.06rem;color:var(--gris);max-width:30em;margin-bottom:24px}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
-.estado{display:inline-flex;align-items:center;gap:9px;margin-top:24px;font-size:.95rem;font-weight:700;padding:9px 16px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.estado{display:inline-flex;align-items:center;gap:9px;margin-top:20px;font-size:.92rem;font-weight:700;padding:8px 15px;border-radius:999px;background:var(--crema);border:1px solid var(--linea)}
 .dot{width:10px;height:10px;border-radius:50%;background:#b9b9b9}
-.dot.on{background:#2fd46f;animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(47,212,111,.6)}100%{box-shadow:0 0 0 10px rgba(47,212,111,0)}}
+.dot.on{background:var(--verde);animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(4,160,79,.55)}100%{box-shadow:0 0 0 10px rgba(4,160,79,0)}}
 @keyframes kenburns{from{transform:scale(1)}to{transform:scale(1.1) translate(-1.5%,-1.5%)}}
 @media(max-width:860px){
-  .hero{padding:32px 0 60px;align-items:flex-end}
-  .hero::after{background:linear-gradient(180deg,rgba(10,18,13,.35) 0%,rgba(10,18,13,.7) 45%,rgba(10,18,13,.9) 100%)}
-  .logo-card{margin-left:-8px}
-  .logo-card img{width:min(320px,82vw)}
+  .hero{min-height:0;padding:200px 0 36px;align-items:flex-end}
+  .hero::after{background:linear-gradient(180deg,rgba(10,18,13,0) 0%,rgba(10,18,13,.25) 100%)}
+  .panel{padding:22px 22px 26px;border-radius:28px}
+  .panel .logo{max-width:300px}
+  .lugar{font-size:.7rem;letter-spacing:.12em}
 }
 
 /* Cinta de fotos */
@@ -188,18 +187,18 @@ footer h4{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#9
 <header class="hero">
   <div class="bg foto" data-foto="fachada"></div>
   <div class="wrap">
-    <div class="contenido">
+    <div class="panel reveal">
       <h1 class="sr">Tu Restaurant Conchita</h1>
-      <div class="logo-card reveal"><img src="img/logo-transparente.png" alt="" width="424" height="240"></div><br>
-      <span class="lugar reveal d1">Cd. Lerdo, Durango · Más de 30 años</span>
-      <h2 class="reveal d1">El sazón de casa, en el <em>centro de Lerdo</em>.</h2>
-      <div class="franja reveal d2"></div>
-      <p class="reveal d2">Desayunos y comidas caseras en una casona con fuente al centro. Abrimos todos los días.</p>
-      <div class="cta reveal d3">
+      <img class="logo" src="img/logo.png" alt="" width="424" height="240">
+      <span class="lugar">Cd. Lerdo, Durango · Más de 30 años</span>
+      <h2>El sazón de casa, en el <em>centro de Lerdo</em>.</h2>
+      <div class="franja"></div>
+      <p>Desayunos y comidas caseras en una casona con fuente al centro. Abrimos todos los días.</p>
+      <div class="cta">
         <a href="menu.html" class="btn btn-rojo">Ver el menú</a>
         <a href="#visitanos" class="btn btn-linea">Cómo llegar</a>
       </div>
-      <div class="estado reveal d3"><span class="dot" id="dot"></span><span id="estado">Abierto todos los días · 8:00 a 16:00</span></div>
+      <div class="estado"><span class="dot" id="dot"></span><span id="estado">Abierto todos los días · 8:00 a 16:00</span></div>
     </div>
   </div>
 </header>
