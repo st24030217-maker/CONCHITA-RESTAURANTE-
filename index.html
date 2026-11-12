@@ -41,6 +41,7 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 nav.solid{background:rgba(251,245,234,.72);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
 .logo{font-family:'Fraunces',serif;font-weight:700;font-size:1.45rem;text-decoration:none;color:#fff;transition:color .3s}
 nav.solid .logo{color:var(--terracota)}
+.logo small{font-family:'DM Sans',sans-serif;font-size:.62rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;opacity:.85;vertical-align:middle}
 .links{display:flex;gap:26px;font-size:.92rem}
 .links a{text-decoration:none;color:rgba(255,255,255,.85);transition:color .3s}
 nav.solid .links a{color:var(--gris)}
@@ -56,6 +57,11 @@ nav.solid .links a{color:var(--gris)}
 .hero h1{font-size:clamp(2.6rem,7.5vw,5rem);max-width:12ch;margin-bottom:18px}
 .hero h1 em{font-style:italic;font-weight:500;color:#f6c48f}
 .hero p{font-size:1.12rem;max-width:32em;opacity:.92;margin-bottom:28px}
+/* Nombre del restaurante: lo más visible de la portada */
+.hero h1.nombre{font-size:clamp(4.2rem,17vw,10rem);max-width:none;line-height:.92;letter-spacing:-.02em;margin-bottom:14px;text-shadow:0 6px 40px rgba(0,0,0,.35)}
+.hero h1.nombre small{display:block;font-family:'DM Sans',sans-serif;font-size:clamp(.9rem,2.2vw,1.25rem);font-weight:700;letter-spacing:.45em;text-transform:uppercase;color:#f6d3a8;margin:0 0 6px 4px;line-height:1.2}
+.hero p.lema{font-family:'Fraunces',serif;font-size:clamp(1.3rem,3.2vw,1.9rem);line-height:1.3;opacity:1;margin-bottom:10px}
+.hero p.lema em{font-style:italic;color:#f6c48f}
 .cta{display:flex;gap:12px;flex-wrap:wrap}
 .estado{display:inline-flex;align-items:center;gap:9px;margin-top:26px;font-size:.9rem;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.14);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .dot{width:8px;height:8px;border-radius:50%;background:#bbb}
@@ -149,7 +155,7 @@ footer a{color:#f5e9d6;text-decoration:none}
 
 <nav id="nav">
   <div class="wrap">
-    <a href="#" class="logo">Conchita</a>
+    <a href="#" class="logo"><small>Restaurant</small> Conchita</a>
     <div class="links">
       <a href="#favoritos">Favoritos</a>
       <a href="#historia">Nuestra casa</a>
@@ -162,8 +168,9 @@ footer a{color:#f5e9d6;text-decoration:none}
 <header class="hero">
   <div class="bg foto" data-foto="fachada"></div>
   <div class="wrap">
-    <span class="eyebrow reveal">Cd. Lerdo · Desde hace más de 30 años</span>
-    <h1 class="reveal d1">El sazón de casa, en el <em>corazón de Lerdo</em>.</h1>
+    <span class="eyebrow reveal">Cd. Lerdo, Durango · Desde hace más de 30 años</span>
+    <h1 class="nombre reveal d1"><small>Restaurant</small>Conchita</h1>
+    <p class="lema reveal d2">El sazón de casa, en el <em>corazón de Lerdo</em>.</p>
     <p class="reveal d2">Desayunos y comidas caseras en una casona tradicional del centro. Ambiente 100% familiar, todos los días.</p>
     <div class="cta reveal d3">
       <a href="menu.html" class="btn btn-pri">Ver el menú</a>
@@ -237,6 +244,7 @@ footer a{color:#f5e9d6;text-decoration:none}
       <div class="cta">
         <a class="btn btn-pri" target="_blank" rel="noopener" href="https://www.google.com/maps/dir/?api=1&destination=25.5394634,-103.5240566">Cómo llegar</a>
         <a class="btn btn-soft" href="tel:+528717252265">Llamar · 871 725 2265</a>
+        <a class="btn btn-soft" target="_blank" rel="noopener" href="https://www.facebook.com/share/1SdGsiu9mm/">Síguenos en Facebook</a>
       </div>
     </div>
   </div>
@@ -245,7 +253,7 @@ footer a{color:#f5e9d6;text-decoration:none}
 <footer>
   <div class="wrap">
     <div>
-      <a class="logo" href="#">Conchita</a>
+      <a class="logo" href="#"><small>Restaurant</small> Conchita</a>
       <p style="margin-top:10px;max-width:22em">Comida casera y ambiente 100% familiar desde hace más de 30 años.</p>
     </div>
     <div>
@@ -254,7 +262,7 @@ footer a{color:#f5e9d6;text-decoration:none}
     </div>
     <div>
       <p><a href="menu.html">Menú digital</a></p>
-      <p><a href="https://www.facebook.com/p/Restaurant-Conchita-100057097405301/" target="_blank" rel="noopener">Facebook</a></p>
+      <p><a href="https://www.facebook.com/share/1SdGsiu9mm/" target="_blank" rel="noopener">Facebook</a></p>
     </div>
   </div>
   <div class="wrap credit">Propuesta de diseño y desarrollo por Sebastián Salinas · Vista previa<br>Fotos de referencia: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> (licencias CC BY / CC BY-SA, sus autores). Se reemplazarán con fotos del restaurante.</div>

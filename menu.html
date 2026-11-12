@@ -16,13 +16,14 @@ h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12}
 .foto{background-image:var(--img),var(--calido);background-size:cover;background-position:center}
 
 /* Portada */
-.portada{position:relative;height:300px;color:#fff;overflow:hidden;display:flex;align-items:flex-end}
+.portada{position:relative;height:360px;color:#fff;overflow:hidden;display:flex;align-items:flex-end}
 .portada .bg{position:absolute;inset:-5%;animation:kb 20s ease-in-out infinite alternate}
 .portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,6,.35),rgba(20,12,6,.1) 40%,rgba(20,12,6,.75))}
 .portada .wrap{position:relative;z-index:2;width:100%;padding-bottom:26px}
 .portada a.back{position:absolute;top:calc(14px + env(safe-area-inset-top));left:16px;z-index:3;color:#fff;text-decoration:none;font-size:.85rem;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
-.portada .sub{font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;font-weight:700;color:#f6d3a8}
-.portada h1{font-size:2.8rem}
+.portada .sub{font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;font-weight:700;color:#f6d3a8;margin-left:3px}
+.portada h1{font-size:clamp(3.6rem,15vw,5.2rem);line-height:.95;letter-spacing:-.02em;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.portada .menu-lbl{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#f6c48f;margin-top:4px}
 .estado{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:.84rem;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
 .dot{width:8px;height:8px;border-radius:50%;background:#bbb}.dot.on{background:#3ccf62;animation:pulse 2s infinite}
 @keyframes kb{to{transform:scale(1.12) translate(-1.5%,-1%)}}
@@ -93,8 +94,9 @@ footer a{color:var(--terracota)}
   <div class="bg foto" data-foto="fachada"></div>
   <a href="index.html" class="back">← Inicio</a>
   <div class="wrap">
-    <div class="sub">Restaurant · Cd. Lerdo</div>
+    <div class="sub">Restaurant</div>
     <h1>Conchita</h1>
+    <div class="menu-lbl">Menú · Cd. Lerdo, Durango</div>
     <div class="estado"><span class="dot" id="dot"></span><span id="estado">Todos los días · 8:00 a 16:00</span></div>
   </div>
 </header>
@@ -114,7 +116,7 @@ footer a{color:var(--terracota)}
 
 <footer class="wrap">
   López Rayón 13 Pte, esq. Fco. Sarabia · Zona Centro, Cd. Lerdo<br>
-  <a href="tel:+528717252265">871 725 2265</a> · Solo cerramos Viernes Santo, 25 dic y 1 ene
+  <a href="tel:+528717252265">871 725 2265</a> · <a href="https://www.facebook.com/share/1SdGsiu9mm/" target="_blank" rel="noopener">Facebook</a><br>Solo cerramos Viernes Santo, 25 dic y 1 ene
   <div style="margin-top:14px;font-size:.72rem;opacity:.8">Menú digital desarrollado por Sebastián Salinas<br>Fotos de referencia: <a href="https://commons.wikimedia.org" target="_blank" rel="noopener">Wikimedia Commons</a> (CC BY / CC BY-SA)</div>
 </footer>
 
