@@ -1,0 +1,546 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Propuesta Restaurant Conchita</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&display=swap">
+<style>
+/* Layout: carta de presentación en bandas — noche de casona (tinta), papel, azul talavera — con un celular vivo como pieza central */
+:root{
+  --tinta:#23160e; --tinta-2:#36241a; --papel:#fbf4e6; --papel-2:#f3e6cd;
+  --terracota:#b4532a; --barro:#8e3c1b; --talavera:#1d4a86; --talavera-2:#163a6b;
+  --oro:#f1bd73; --gris:#6e5c4f; --blanco:#fffdf8; --verde:#3f8f4f;
+  --display:'Fraunces',Georgia,'Times New Roman',serif;
+  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:var(--display);line-height:1.08;margin:0;text-wrap:balance}
+p{margin:0}
+a{color:inherit}
+.wrap{max-width:1120px;margin:0 auto;padding-left:max(20px,env(safe-area-inset-left,0px));padding-right:max(20px,env(safe-area-inset-right,0px))}
+.eyebrow{font-size:.74rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase}
+:focus-visible{outline:3px solid var(--oro);outline-offset:3px;border-radius:6px}
+
+/* Cenefa de talavera */
+.cenefa{height:30px;background-color:var(--blanco);background-size:30px 30px;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' fill='%23fffdf8'/%3E%3Cpath d='M15 3 L19 11 L27 15 L19 19 L15 27 L11 19 L3 15 L11 11Z' fill='%231d4a86'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23f1bd73'/%3E%3Cpath d='M0 0h5v5H0zM25 0h5v5h-5zM0 25h5v5H0zM25 25h5v5h-5z' fill='%231d4a86' opacity='.55'/%3E%3C/svg%3E")}
+
+/* Botones */
+.btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;border:0;cursor:pointer;font-family:var(--body);transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-pri{background:var(--terracota);color:var(--blanco)}
+.btn-pri:hover{background:var(--barro)}
+.btn-lin{background:transparent;color:var(--papel);box-shadow:inset 0 0 0 1.5px rgba(251,244,230,.4)}
+
+/* ===== Portada ===== */
+.portada{background:var(--tinta);color:var(--papel);position:relative;overflow:hidden}
+.portada::before{content:"";position:absolute;inset:0;background:
+  radial-gradient(60% 70% at 85% 40%,rgba(180,83,42,.35),transparent 70%),
+  radial-gradient(40% 50% at 10% 100%,rgba(29,74,134,.35),transparent 70%)}
+.portada .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:64px 72px}
+.portada .eyebrow{color:var(--oro)}
+.nombre{margin:18px 0 22px;font-weight:800;font-size:clamp(4.4rem,13vw,9.6rem);letter-spacing:-.035em;line-height:.86}
+.nombre small{display:block;font-family:var(--body);font-weight:700;font-size:clamp(.9rem,2vw,1.15rem);letter-spacing:.5em;text-transform:uppercase;color:var(--oro);margin:0 0 10px 6px;line-height:1.2}
+.nombre em{font-style:italic;font-weight:400;color:var(--oro)}
+.lema{font-family:var(--display);font-size:clamp(1.25rem,2.6vw,1.65rem);line-height:1.35;max-width:26em;color:rgba(251,244,230,.92)}
+.firma{margin-top:20px;font-size:.88rem;color:rgba(251,244,230,.6)}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:28px}
+.vivo{display:inline-flex;align-items:center;gap:10px;margin-top:26px;padding:9px 16px;border-radius:999px;background:rgba(251,244,230,.08);font-size:.88rem}
+.vivo b{font-weight:700}
+.dot{width:9px;height:9px;border-radius:50%;background:#9a8a7c;flex:none}
+.dot.on{background:#42c56a;animation:pulse 2s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(66,197,106,.55)}100%{box-shadow:0 0 0 10px rgba(66,197,106,0)}}
+.entra{animation:entra .9s cubic-bezier(.2,.7,.2,1) both}
+.e2{animation-delay:.12s}.e3{animation-delay:.24s}.e4{animation-delay:.36s}
+@keyframes entra{from{opacity:0;transform:translateY(26px)}}
+
+/* ===== Celular ===== */
+.demo{display:flex;flex-direction:column;align-items:center;gap:16px}
+.phone{position:relative;width:min(290px,80vw);aspect-ratio:9/18.5;border-radius:44px;background:#0f0905;padding:10px;box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1.5px rgba(255,255,255,.08) inset;animation:flota 6s ease-in-out infinite}
+@keyframes flota{50%{transform:translateY(-8px)}}
+.notch{position:absolute;top:18px;left:50%;transform:translateX(-50%);width:84px;height:22px;border-radius:20px;background:#0f0905;z-index:5}
+.screen{position:relative;width:100%;height:100%;border-radius:34px;overflow:hidden;background:var(--papel);color:var(--tinta);font-size:11px;line-height:1.4}
+.view{position:absolute;inset:0;opacity:0;visibility:hidden;transform:translateX(18px);transition:opacity .45s,transform .45s cubic-bezier(.2,.7,.2,1),visibility .45s;display:flex;flex-direction:column}
+.view.on{opacity:1;visibility:visible;transform:none}
+.switch{display:flex;gap:4px;padding:4px;border-radius:999px;background:rgba(251,244,230,.08)}
+.switch button{border:0;background:transparent;color:rgba(251,244,230,.7);font:500 .85rem var(--body);padding:8px 16px;border-radius:999px;cursor:pointer}
+.switch button[aria-selected="true"]{background:var(--papel);color:var(--tinta)}
+.nota-demo{font-size:.78rem;color:rgba(251,244,230,.55);text-align:center;max-width:24em}
+
+/* Platos ilustrados (en lugar de fotos, hasta tener las del restaurante) */
+.plate{aspect-ratio:1;border-radius:50%;background:
+  radial-gradient(circle at 38% 40%,var(--t) 0 5%,transparent 6%),
+  radial-gradient(circle at 61% 34%,var(--t) 0 4%,transparent 5%),
+  radial-gradient(circle at 56% 62%,var(--t) 0 6%,transparent 7%),
+  radial-gradient(circle at 36% 64%,var(--t2) 0 4%,transparent 5%),
+  radial-gradient(circle at 67% 51%,var(--t2) 0 3.5%,transparent 4.5%),
+  radial-gradient(circle at 47% 48%,var(--t2) 0 2.5%,transparent 3.5%),
+  radial-gradient(circle,var(--s) 0 49%,transparent 50%),
+  radial-gradient(circle,#fffdf8 0 63%,#e7dac4 64% 68%,transparent 69%);
+  filter:drop-shadow(0 6px 10px rgba(35,22,14,.25))}
+.p-chilaquiles{--s:#5d8b39;--t:#fff4df;--t2:#c94f6d}
+.p-rancheros{--s:#c0392b;--t:#fffaf0;--t2:#f4b52c}
+.p-rajas{--s:#ece0c4;--t:#3f7f3a;--t2:#5d9a47}
+.p-molletes{--s:#e2b46f;--t:#6b3a1e;--t2:#d8452f}
+.p-gorditas{--s:#d7a45d;--t:#7a3b1e;--t2:#5f8b3a}
+.p-flautas{--s:#e6b56a;--t:#fff4df;--t2:#4f8a32}
+.p-enchiladas{--s:#a8321f;--t:#fff4df;--t2:#6a9a3c}
+.p-chileverde{--s:#4f7b2c;--t:#7a3b1e;--t2:#9a5a2c}
+.p-cafe{--s:#4a2a17;--t:#b97c45;--t2:#6a3e22}
+.p-agua{--s:#e4566e;--t:#ffd0d8;--t2:#ffffff}
+.mantel{display:grid;place-items:center;background:var(--papel-2)}
+
+/* Vista: inicio */
+.mh{position:relative;flex:1;background:linear-gradient(160deg,#e3a866,#b4532a 55%,#5b2a14);color:var(--blanco);padding:44px 16px 16px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.mh .plate{position:absolute;width:170px;right:-40px;top:40px;opacity:.95}
+.mh .navm{position:absolute;top:40px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:13px}
+.mh .navm span{font-family:var(--body);font-size:9px;font-weight:700;background:var(--terracota);padding:5px 10px;border-radius:99px}
+.mh .ey{font-size:8px;letter-spacing:.2em;text-transform:uppercase;color:#ffe1b8;font-weight:700}
+.mh .nm{font-family:var(--display);font-weight:800;font-size:44px;line-height:.9;letter-spacing:-.03em;margin:4px 0 6px}
+.mh .nm small{display:block;font-family:var(--body);font-size:8px;letter-spacing:.45em;color:#ffe1b8;margin-bottom:3px}
+.mh .lm{font-family:var(--display);font-style:italic;font-size:12px;opacity:.95}
+.mbtns{display:flex;gap:6px;margin-top:10px}
+.mbtns span{font-size:9.5px;font-weight:700;padding:7px 12px;border-radius:99px;background:rgba(255,255,255,.2)}
+.mbtns span:first-child{background:var(--terracota)}
+.mest{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-size:9px;padding:4px 9px;border-radius:99px;background:rgba(0,0,0,.25);align-self:flex-start}
+.mest .dot{width:6px;height:6px}
+.mfav{padding:12px 14px 16px}
+.mfav b{font-family:var(--display);font-size:13px}
+.mfav .row{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:8px}
+.mfav .row div{border-radius:12px;padding:8px 6px 6px;background:var(--papel-2);text-align:center;font-size:8.5px;font-weight:700}
+.mfav .row .plate{width:70%;margin:0 auto 4px}
+
+/* Vista: menú */
+.mm-top{padding:40px 14px 8px;background:var(--papel)}
+.mm-top .t{display:flex;justify-content:space-between;align-items:baseline}
+.mm-top b{font-family:var(--display);font-size:20px;font-weight:800}
+.mm-top small{font-size:8px;letter-spacing:.3em;text-transform:uppercase;color:var(--terracota);font-weight:700}
+.mm-top input{width:100%;margin-top:8px;border:0;border-radius:10px;padding:9px 11px;background:rgba(35,22,14,.07);font:inherit;font-size:11px;color:var(--tinta)}
+.mm-top input:focus{outline:2px solid var(--terracota);background:var(--blanco)}
+.mtabs{display:flex;gap:4px;margin-top:8px;overflow-x:auto;scrollbar-width:none}
+.mtabs::-webkit-scrollbar{display:none}
+.mtabs button{flex:none;border:0;border-radius:99px;padding:5px 10px;font:500 10px var(--body);background:transparent;color:var(--gris);cursor:pointer}
+.mtabs button.act{background:var(--terracota);color:var(--blanco)}
+.mlist{flex:1;overflow-y:auto;padding:4px 10px 14px;scrollbar-width:none}
+.mlist::-webkit-scrollbar{display:none}
+.mi{display:flex;gap:9px;align-items:center;width:100%;text-align:left;border:0;background:transparent;padding:7px 4px;border-radius:12px;cursor:pointer;font:inherit;color:inherit}
+.mi:hover{background:var(--blanco)}
+.mi .th{width:44px;height:44px;border-radius:11px;flex:none}
+.mi .th .plate{width:84%}
+.mi .tx{flex:1;min-width:0}
+.mi .tp{display:flex;justify-content:space-between;gap:6px;font-weight:700;font-size:11px}
+.mi .tp span:last-child{color:var(--terracota)}
+.mi p{font-size:9.5px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.chips{display:flex;gap:4px;margin-top:3px;flex-wrap:wrap}
+.chip{font-size:8px;font-weight:700;padding:2px 7px;border-radius:99px}
+.chip.fav{background:rgba(180,83,42,.13);color:var(--barro)}
+.chip.veg{background:rgba(63,143,79,.14);color:#2f6b3b}
+.chip.pic{background:rgba(192,57,43,.13);color:#a83222}
+.mvacio{text-align:center;color:var(--gris);padding:24px 8px;font-size:10px}
+
+/* Vista: ficha */
+.v-ficha{background:rgba(35,22,14,.35)}
+.fsheet{margin-top:auto;background:var(--papel);border-radius:22px 22px 0 0;padding:10px 14px 18px}
+.fsheet .grab{width:34px;height:4px;border-radius:9px;background:rgba(35,22,14,.18);margin:0 auto 10px}
+.fsheet .big{height:150px;border-radius:16px;margin-bottom:10px}
+.fsheet .big .plate{width:130px}
+.fsheet .tp{display:flex;justify-content:space-between;align-items:baseline;gap:8px}
+.fsheet h4{font-family:var(--display);font-size:18px;margin:0;line-height:1.1}
+.fsheet .pr{font-weight:700;color:var(--terracota);font-size:14px}
+.fsheet p{color:var(--gris);font-size:10.5px;margin:6px 0 12px}
+.fsheet button{width:100%;border:0;border-radius:99px;padding:10px;background:var(--terracota);color:var(--blanco);font:700 11px var(--body);cursor:pointer}
+
+/* ===== Secciones ===== */
+.sec{padding-block:96px}
+.sec-head{max-width:720px;margin-bottom:48px}
+.sec-head .eyebrow{color:var(--terracota)}
+.sec-head h2{font-size:clamp(2.1rem,5vw,3.4rem);font-weight:800;letter-spacing:-.02em;margin-top:12px}
+.sec-head p{margin-top:16px;font-size:1.08rem;color:var(--gris);max-width:36em}
+
+/* Hoy: preguntas del cliente */
+.preguntas{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.preg{padding:28px 26px;border-radius:26px;background:var(--blanco);box-shadow:0 1px 0 rgba(35,22,14,.06)}
+.preg q{display:block;font-family:var(--display);font-style:italic;font-size:1.55rem;line-height:1.2;quotes:"¿" "?"}
+.preg q::before,.preg q::after{content:none}
+.preg p{margin-top:12px;color:var(--gris);font-size:.95rem}
+.preg .resp{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(35,22,14,.18);font-size:.88rem;font-weight:700;color:var(--talavera)}
+
+/* Incluye */
+.incluye{background:var(--papel-2)}
+.piezas{display:grid;grid-template-columns:1fr 1fr;gap:22px}
+.pieza{position:relative;border-radius:30px;padding:34px 32px;overflow:hidden;min-width:0}
+.pieza.a{background:var(--tinta);color:var(--papel)}
+.pieza.b{background:var(--terracota);color:var(--blanco)}
+.pieza .eyebrow{opacity:.75}
+.pieza h3{font-size:clamp(1.7rem,3.4vw,2.3rem);font-weight:800;margin:10px 0 14px}
+.pieza ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.pieza li{display:flex;gap:12px;align-items:baseline;font-size:.98rem}
+.pieza li::before{content:"";flex:none;width:7px;height:7px;transform:rotate(45deg) translateY(-2px);background:var(--oro)}
+.pieza.b li::before{background:var(--papel)}
+.pieza .plate{position:absolute;width:190px;right:-50px;bottom:-50px;opacity:.9}
+.pieza .cont{position:relative;max-width:30em}
+.extras{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;margin-top:22px;border-radius:26px;overflow:hidden;background:rgba(35,22,14,.12)}
+.extra{background:var(--papel);padding:24px 24px 26px}
+.extra h3{font-size:1.15rem;font-weight:600}
+.extra p{margin-top:6px;color:var(--gris);font-size:.92rem}
+.extra .dato{display:inline-block;margin-top:10px;font-size:.8rem;font-weight:700;color:var(--talavera);font-variant-numeric:tabular-nums}
+
+/* QR */
+.qr{background:var(--talavera);color:var(--blanco);position:relative;overflow:hidden}
+.qr .wrap{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center}
+.qr .sec-head{margin-bottom:0}
+.qr .sec-head .eyebrow{color:var(--oro)}
+.qr .sec-head p{color:rgba(255,253,248,.82)}
+.qr ul{list-style:none;padding:0;margin:26px 0 0;display:grid;gap:12px}
+.qr li{display:flex;gap:12px;align-items:baseline}
+.qr li::before{content:"";flex:none;width:8px;height:8px;border-radius:50%;background:var(--oro);transform:translateY(-2px)}
+.mesa{display:flex;justify-content:center;perspective:900px}
+.tent{width:min(300px,80vw);background:var(--blanco);color:var(--tinta);border-radius:20px;padding:26px 24px 22px;text-align:center;box-shadow:0 30px 60px -25px rgba(0,0,0,.6);transform:rotateX(8deg) rotateY(-12deg);transition:transform .6s cubic-bezier(.2,.7,.2,1)}
+.tent:hover{transform:none}
+.tent .cenefa{height:16px;background-size:16px 16px;border-radius:6px;margin:-8px -6px 18px}
+.tent small{display:block;font-size:.66rem;letter-spacing:.4em;text-transform:uppercase;font-weight:700;color:var(--terracota)}
+.tent b{display:block;font-family:var(--display);font-weight:800;font-size:2.4rem;line-height:1;margin:4px 0 14px}
+.tent canvas{width:68%;max-width:100%;aspect-ratio:1;image-rendering:pixelated;display:block;margin:0 auto}
+.tent p{margin-top:14px;font-weight:700}
+.tent .ej{display:block;margin-top:6px;font-size:.72rem;font-weight:400;color:var(--gris)}
+
+/* Pasos */
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;counter-reset:paso}
+.paso{counter-increment:paso;border-top:3px solid var(--tinta);padding-top:18px}
+.paso::before{content:counter(paso);display:block;font-family:var(--display);font-weight:800;font-size:3.2rem;line-height:1;color:var(--terracota);margin-bottom:10px}
+.paso h3{font-size:1.25rem;font-weight:600}
+.paso p{margin-top:8px;color:var(--gris);font-size:.94rem}
+.necesito{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:28px 40px;align-items:start;padding:32px;border-radius:28px;background:var(--blanco)}
+.necesito h3{font-size:1.5rem;font-weight:800;max-width:9em}
+.necesito ul{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:12px 28px}
+.necesito li{display:flex;gap:12px;align-items:baseline}
+.necesito li::before{content:"";flex:none;width:16px;height:16px;border-radius:5px;box-shadow:inset 0 0 0 2px var(--talavera);transform:translateY(3px)}
+
+/* Cierre */
+.cierre{background:var(--tinta);color:var(--papel);text-align:center;padding-block:100px 90px;position:relative;overflow:hidden}
+.cierre::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(180,83,42,.4),transparent 70%)}
+.cierre .wrap{position:relative}
+.cierre .eyebrow{color:var(--oro)}
+.cierre h2{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;letter-spacing:-.02em;margin:16px auto 0;max-width:14em}
+.cierre h2 em{font-weight:400;color:var(--oro)}
+.cierre p{margin:20px auto 0;max-width:34em;color:rgba(251,244,230,.78);font-size:1.05rem}
+.cierre .cta{justify-content:center}
+.autor{margin-top:56px;display:inline-flex;flex-direction:column;gap:2px;padding-top:22px;border-top:1px solid rgba(251,244,230,.18)}
+.autor b{font-family:var(--display);font-size:1.3rem;font-weight:600}
+.autor span{font-size:.85rem;color:rgba(251,244,230,.6)}
+.letra{padding-block:22px;font-size:.78rem;color:var(--gris);text-align:center}
+.powered{background:var(--tinta);color:rgba(251,244,230,.6);text-align:center;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase;padding-block:20px}
+.powered b{color:var(--oro);font-weight:700;letter-spacing:.18em}
+
+@media(max-width:900px){
+  .portada .wrap,.qr .wrap{grid-template-columns:1fr;gap:44px}
+  .preguntas,.piezas{grid-template-columns:1fr}
+  .extras{grid-template-columns:1fr 1fr}
+  .pasos{grid-template-columns:1fr 1fr;gap:32px 20px}
+  .necesito{grid-template-columns:1fr}
+}
+@media(max-width:560px){
+  .sec{padding-block:70px}
+  .extras,.pasos,.necesito ul{grid-template-columns:1fr}
+  .pieza{padding:28px 24px}
+  .necesito{padding:26px 22px}
+}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="portada">
+  <div class="wrap">
+    <div>
+      <div class="eyebrow entra">Propuesta de página web y menú digital</div>
+      <h1 class="nombre entra e2"><small>Restaurant</small>Conchita</h1>
+      <p class="lema entra e3">Más de 30 años de sazón casero en una casona del centro de Lerdo. Ahora, también a un toque en el celular de sus clientes.</p>
+      <div class="vivo entra e4" aria-live="polite"><span class="dot" id="dot"></span><span id="vivo">Abierto todos los días · 8:00 a 16:00</span></div>
+      <div class="cta entra e4">
+        <a class="btn btn-pri" href="#incluye">Ver qué incluye</a>
+        <a class="btn btn-lin" href="#pasos">Cómo trabajaríamos</a>
+      </div>
+      <p class="firma">Preparada por Sebastián Salinas · Noviembre 2026</p>
+    </div>
+
+    <div class="demo entra e3">
+      <div class="phone" aria-label="Vista previa de la página en un celular">
+        <div class="notch"></div>
+        <div class="screen">
+          <!-- Inicio -->
+          <div class="view v-inicio on" data-view="inicio">
+            <div class="mh">
+              <div class="navm">Conchita <span>Ver menú</span></div>
+              <div class="plate p-chilaquiles"></div>
+              <div class="ey">Cd. Lerdo · Más de 30 años</div>
+              <div class="nm"><small>RESTAURANT</small>Conchita</div>
+              <div class="lm">El sazón de casa, en el corazón de Lerdo.</div>
+              <div class="mbtns"><span>Ver menú</span><span>Cómo llegar</span></div>
+              <div class="mest"><span class="dot" id="dot2"></span><span id="vivo2">8:00 a 16:00</span></div>
+            </div>
+            <div class="mfav">
+              <b>Favoritos de la casa</b>
+              <div class="row">
+                <div><div class="plate p-chilaquiles"></div>Chilaquiles</div>
+                <div><div class="plate p-cafe"></div>Café de olla</div>
+                <div><div class="plate p-gorditas"></div>Gorditas</div>
+              </div>
+            </div>
+          </div>
+          <!-- Menú -->
+          <div class="view v-menu" data-view="menu">
+            <div class="mm-top">
+              <div class="t"><b>Menú</b><small>Conchita</small></div>
+              <label for="demoQ" style="position:absolute;left:-9999px">Buscar platillo</label>
+              <input id="demoQ" type="search" placeholder="Buscar… prueba “café”" autocomplete="off">
+              <div class="mtabs" id="mtabs"></div>
+            </div>
+            <div class="mlist" id="mlist"></div>
+          </div>
+          <!-- Ficha -->
+          <div class="view v-ficha" data-view="ficha">
+            <div class="fsheet">
+              <div class="grab"></div>
+              <div class="big mantel"><div class="plate" id="fPlate"></div></div>
+              <div class="tp"><h4 id="fName">Chilaquiles</h4><span class="pr" id="fPrice">$110</span></div>
+              <div class="chips" id="fChips"></div>
+              <p id="fDesc"></p>
+              <button type="button" id="fBack">Volver al menú</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="switch" role="tablist" aria-label="Pantallas de ejemplo">
+        <button type="button" role="tab" data-v="inicio" aria-selected="true">Inicio</button>
+        <button type="button" role="tab" data-v="menu" aria-selected="false">Menú</button>
+        <button type="button" role="tab" data-v="ficha" aria-selected="false">Platillo</button>
+      </div>
+      <p class="nota-demo">Pruébelo: busque un platillo o toque uno del menú. Las ilustraciones se cambian por fotos reales de sus platillos.</p>
+    </div>
+  </div>
+</header>
+
+<div class="cenefa" aria-hidden="true"></div>
+
+<section class="sec">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Hoy</span>
+      <h2>Su comida ya tiene fama. Falta que sea fácil de encontrar.</h2>
+      <p>Antes de salir a desayunar, la gente busca en el celular. En unos segundos quiere resolver tres preguntas, y hoy las respuestas están repartidas entre Facebook, Google Maps y lo que les cuentan.</p>
+    </div>
+    <div class="preguntas">
+      <div class="preg"><q>¿Está abierto hoy?</q><p>Sobre todo en días festivos, cuando muchos lugares cambian su horario.</p><div class="resp">La página lo dice en vivo, con la hora de Lerdo.</div></div>
+      <div class="preg"><q>¿Qué tienen y cuánto cuesta?</q><p>Sin un menú a la mano, muchos clientes eligen el lugar que sí lo muestra.</p><div class="resp">Menú completo con precios y fotos.</div></div>
+      <div class="preg"><q>¿Cómo llego?</q><p>Quien viene de Gómez o Torreón no siempre conoce el centro de Lerdo.</p><div class="resp">Un botón abre la ruta hasta la puerta.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec incluye" id="incluye">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">La propuesta</span>
+      <h2>Dos piezas, hechas a la medida de Conchita.</h2>
+      <p>Las dos ya existen como demostración y se ajustan con su menú oficial, sus precios y fotos de sus platillos y de la casona.</p>
+    </div>
+    <div class="piezas">
+      <article class="pieza a">
+        <div class="plate p-enchiladas" aria-hidden="true"></div>
+        <div class="cont">
+          <span class="eyebrow">Pieza 1</span>
+          <h3>Página del restaurante</h3>
+          <ul>
+            <li>Portada con el nombre en grande y fotos de la casona</li>
+            <li>Favoritos de la casa: chilaquiles, café de olla, gorditas y más</li>
+            <li>La historia de la casona: la fuente, los espejos y los relojes</li>
+            <li>Mapa, horario y botones para llamar o llegar</li>
+          </ul>
+        </div>
+      </article>
+      <article class="pieza b">
+        <div class="plate p-cafe" aria-hidden="true"></div>
+        <div class="cont">
+          <span class="eyebrow">Pieza 2</span>
+          <h3>Menú digital</h3>
+          <ul>
+            <li>Categorías: desayunos, antojitos, comidas caseras y bebidas</li>
+            <li>Buscador que encuentra “cafe” aunque se escriba sin acento</li>
+            <li>Ficha de cada platillo con foto, precio y descripción</li>
+            <li>Etiquetas de favorito, vegetariano y picante</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="extras">
+      <div class="extra"><h3>Letrero de abierto o cerrado</h3><p>Se actualiza solo con la hora local y respeta los días que cierran.</p><span class="dato">8:00 – 16:00 · todos los días</span></div>
+      <div class="extra"><h3>Llamar con un toque</h3><p>Desde el celular, sin copiar el número.</p><span class="dato">871 725 2265</span></div>
+      <div class="extra"><h3>Cómo llegar</h3><p>Abre Google Maps con la ruta directa al restaurante.</p><span class="dato">López Rayón 13 Pte, Zona Centro</span></div>
+      <div class="extra"><h3>Hecha para el celular</h3><p>Se ve bien en cualquier teléfono, tableta o computadora.</p><span class="dato">Carga rápido, sin instalar nada</span></div>
+      <div class="extra"><h3>Precios fáciles de cambiar</h3><p>Si sube un precio o entra un platillo nuevo, se cambia en minutos.</p><span class="dato">Sin reimprimir cartas</span></div>
+      <div class="extra"><h3>Conectada a su Facebook</h3><p>La página y el Facebook se recomiendan uno al otro.</p><span class="dato">Restaurant Conchita | Ciudad Lerdo</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec qr">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">En las mesas</span>
+      <h2>Del código QR en la mesa al menú en el celular.</h2>
+      <p>Un tarjetón en cada mesa con un código QR. El cliente lo escanea con la cámara y ve el menú completo, con fotos.</p>
+      <ul>
+        <li>El menú siempre está al día, aunque cambien los precios.</li>
+        <li>Las cartas impresas se pueden seguir usando, el QR las complementa.</li>
+        <li>El mismo código sirve en la puerta, en volantes y en Facebook.</li>
+      </ul>
+    </div>
+    <div class="mesa">
+      <div class="tent">
+        <div class="cenefa" aria-hidden="true"></div>
+        <small>Restaurant</small>
+        <b>Conchita</b>
+        <canvas id="qr" width="29" height="29" aria-label="Ejemplo de código QR"></canvas>
+        <p>Escanea y ve nuestro menú</p>
+        <span class="ej">Ejemplo de diseño. El código real se genera al publicar la página.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" id="pasos">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="eyebrow">Cómo trabajaríamos</span>
+      <h2>Cuatro pasos, sin complicarles el día.</h2>
+      <p>Ustedes siguen atendiendo el restaurante. Yo me encargo de la parte técnica.</p>
+    </div>
+    <div class="pasos">
+      <div class="paso"><h3>Platicamos</h3><p>Revisamos juntos esta propuesta y lo que quieren que se destaque de Conchita.</p></div>
+      <div class="paso"><h3>Fotos y menú</h3><p>Tomamos fotos de los platillos y de la casona, y confirmamos el menú con sus precios.</p></div>
+      <div class="paso"><h3>Ajustes</h3><p>Les muestro la página terminada en su celular y cambiamos lo que haga falta.</p></div>
+      <div class="paso"><h3>Publicamos</h3><p>La página queda en línea, con el QR para las mesas y el link en su Facebook.</p></div>
+    </div>
+    <div class="necesito">
+      <h3>Lo que necesito de ustedes</h3>
+      <ul>
+        <li>El menú con los precios actuales</li>
+        <li>Permiso para tomar fotos, o las que ya tengan</li>
+        <li>Su logotipo, si cuentan con uno</li>
+        <li>Confirmar el horario y los días que cierran</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="cenefa" aria-hidden="true"></div>
+
+<section class="cierre">
+  <div class="wrap">
+    <span class="eyebrow">Siguiente paso</span>
+    <h2>Una casona con historia merece una página <em>a su altura</em>.</h2>
+    <p>Con 15 minutos en el restaurante les muestro la demostración en su propio celular y resolvemos sus dudas.</p>
+    <div class="cta"><a class="btn btn-pri" href="#incluye">Repasar la propuesta</a></div>
+    <div class="autor"><b>Sebastián Salinas</b><span>Diseño y desarrollo web · Comarca Lagunera</span></div>
+  </div>
+</section>
+<p class="letra wrap">Los precios del menú de muestra son de ejemplo y se reemplazan con los oficiales del restaurante.</p>
+<footer class="powered"><div class="wrap">Powered by <b>SSS.SOLUTIONS</b></div></footer>
+
+<script>
+// Menú de muestra (mismos platillos que la demostración)
+const MENU=[
+  {c:"Desayunos",n:"Chilaquiles rojos o verdes",p:110,k:"chilaquiles",t:["fav"],d:"Con crema, queso y cebolla. Agrega huevo o pollo."},
+  {c:"Desayunos",n:"Huevos rancheros",p:90,k:"rancheros",d:"Dos huevos estrellados bañados en salsa ranchera."},
+  {c:"Desayunos",n:"Rajas con crema",p:105,k:"rajas",t:["fav","veg"],d:"Rajas de chile poblano en crema, con frijoles y tortillas."},
+  {c:"Desayunos",n:"Molletes",p:80,k:"molletes",t:["veg"],d:"Bolillo con frijoles y queso gratinado, con pico de gallo."},
+  {c:"Antojitos",n:"Gorditas",p:35,k:"gorditas",t:["fav"],d:"De masa del día, rellenas del guisado de tu elección."},
+  {c:"Antojitos",n:"Flautas",p:95,k:"flautas",d:"Cuatro piezas doradas con lechuga, crema, queso y salsa."},
+  {c:"Antojitos",n:"Enchiladas",p:110,k:"enchiladas",d:"Rojas o verdes, rellenas de pollo o queso."},
+  {c:"Comidas",n:"Res en chile verde",p:140,k:"chileverde",t:["fav","pic"],d:"Guisado tradicional de res, con arroz y frijoles."},
+  {c:"Bebidas",n:"Café de olla",p:35,k:"cafe",t:["fav"],d:"Con canela y piloncillo, como en casa."},
+  {c:"Bebidas",n:"Agua fresca",p:30,k:"agua",d:"Sabor del día, en vaso o jarra."},
+];
+const TAGS={fav:"Favorito",veg:"Vegetariano",pic:"Picante"};
+const $=s=>document.querySelector(s);
+const norm=s=>s.normalize("NFD").replace(/[̀-ͯ]/g,"").toLowerCase();
+const chips=it=>(it.t||[]).map(k=>`<span class="chip ${k}">${TAGS[k]}</span>`).join("");
+
+// Cambio de pantallas del celular
+let auto=null;
+function ver(v){
+  document.querySelectorAll(".view").forEach(el=>el.classList.toggle("on",el.dataset.view===v));
+  document.querySelectorAll(".switch button").forEach(b=>b.setAttribute("aria-selected",b.dataset.v===v));
+}
+function parar(){if(auto){clearInterval(auto);auto=null}}
+document.querySelectorAll(".switch button").forEach(b=>b.addEventListener("click",()=>{parar();ver(b.dataset.v)}));
+
+// Menú con buscador y categorías
+const cats=["Todo",...new Set(MENU.map(i=>i.c))];
+let cat="Todo";
+const mtabs=$("#mtabs"), mlist=$("#mlist"), q=$("#demoQ");
+cats.forEach(c=>{const b=document.createElement("button");b.type="button";b.textContent=c;if(c===cat)b.className="act";
+  b.onclick=()=>{parar();cat=c;mtabs.querySelectorAll("button").forEach(x=>x.classList.toggle("act",x===b));pintar()};mtabs.appendChild(b)});
+function pintar(){
+  const t=norm(q.value.trim());
+  const lista=MENU.filter(i=>(cat==="Todo"||i.c===cat)&&(!t||norm(i.n+" "+i.d).includes(t)));
+  mlist.innerHTML=lista.length?"":`<div class="mvacio">No encontramos ese platillo.<br>Prueba con otra palabra.</div>`;
+  lista.forEach(it=>{
+    const b=document.createElement("button");b.type="button";b.className="mi";
+    b.innerHTML=`<div class="th mantel"><div class="plate p-${it.k}"></div></div><div class="tx"><div class="tp"><span>${it.n}</span><span>$${it.p}</span></div><p>${it.d}</p>${it.t?`<div class="chips">${chips(it)}</div>`:""}</div>`;
+    b.onclick=()=>{parar();ficha(it);ver("ficha")};
+    mlist.appendChild(b);
+  });
+}
+function ficha(it){
+  $("#fPlate").className="plate p-"+it.k;$("#fName").textContent=it.n;$("#fPrice").textContent="$"+it.p;
+  $("#fChips").innerHTML=chips(it);$("#fDesc").textContent=it.d;
+}
+q.addEventListener("input",()=>{parar();pintar()});
+q.addEventListener("focus",parar);
+$("#fBack").onclick=()=>{parar();ver("menu")};
+pintar();ficha(MENU[0]);
+
+// Recorrido automático hasta que la persona toque algo
+if(!matchMedia("(prefers-reduced-motion: reduce)").matches){
+  const orden=["inicio","menu","ficha"];let i=0;
+  auto=setInterval(()=>{i=(i+1)%orden.length;ver(orden[i])},4200);
+}
+
+// Abierto / cerrado con la hora de Lerdo, respetando Viernes Santo, 25 dic y 1 ene
+function pascua(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),
+  h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,m=Math.floor((a+11*h+22*l)/451),
+  mes=Math.floor((h+l-7*m+114)/31),dia=((h+l-7*m+114)%31)+1;return new Date(y,mes-1,dia)}
+function festivo(dt){const m=dt.getMonth(),d=dt.getDate();if((m===11&&d===25)||(m===0&&d===1))return true;
+  const vs=pascua(dt.getFullYear());vs.setDate(vs.getDate()-2);return vs.getMonth()===m&&vs.getDate()===d}
+try{
+  const now=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Monterrey"}));
+  const min=now.getHours()*60+now.getMinutes();const man=new Date(now);man.setDate(man.getDate()+1);
+  let txt,on=false,corto;
+  if(festivo(now)){txt="<b>Hoy cerrado</b> por día festivo";corto="Hoy cerrado"}
+  else if(min>=480&&min<960){on=true;txt="<b>Abierto ahora</b> en Lerdo · cierra a las 16:00";corto="Abierto ahora"}
+  else if(min<480){txt="<b>Cerrado</b> · hoy abre a las 8:00";corto="Abre a las 8:00"}
+  else if(festivo(man)){txt="<b>Cerrado</b> · mañana no abre por día festivo";corto="Cerrado"}
+  else{txt="<b>Cerrado</b> · mañana abre a las 8:00";corto="Abre mañana 8:00"}
+  $("#vivo").innerHTML=txt+" <span style='opacity:.6'>(en vivo)</span>";$("#vivo2").textContent=corto;
+  if(on){$("#dot").classList.add("on");$("#dot2").classList.add("on")}
+}catch(e){}
+
+// Código QR de ejemplo (decorativo)
+(function(){const c=$("#qr"),x=c.getContext("2d"),N=29;let s=7;const r=()=>(s=(s*16807)%2147483647)/2147483647;
+  x.fillStyle="#fffdf8";x.fillRect(0,0,N,N);x.fillStyle="#23160e";
+  const fin=(a,b)=>{x.fillRect(a,b,7,7);x.fillStyle="#fffdf8";x.fillRect(a+1,b+1,5,5);x.fillStyle="#23160e";x.fillRect(a+2,b+2,3,3)};
+  const zona=(i,j)=>(i<8&&j<8)||(i>N-9&&j<8)||(i<8&&j>N-9);
+  for(let i=0;i<N;i++)for(let j=0;j<N;j++){if(zona(i,j))continue;if(r()>.52)x.fillRect(i,j,1,1)}
+  fin(0,0);fin(N-7,0);fin(0,N-7);
+  x.fillStyle="#b4532a";x.fillRect(12,12,5,5);x.fillStyle="#fffdf8";x.fillRect(13,13,3,3);x.fillStyle="#b4532a";x.fillRect(14,14,1,1);
+})();
+</script>
+</body>
+</html>
