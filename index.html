@@ -4,6 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Restaurant Conchita · Comida casera en Lerdo, Durango</title>
+<meta name="theme-color" content="#b4532a">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_MX">
+<meta property="og:site_name" content="Restaurant Conchita">
+<meta property="og:title" content="Restaurant Conchita · Cd. Lerdo, Durango">
+<meta property="og:description" content="Comida casera y ambiente 100% familiar en el centro de Lerdo. Todos los días de 8:00 a 16:00.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%23b4532a%27/%3E%3Ctext x=%2732%27 y=%2745%27 font-family=%27Georgia,serif%27 font-size=%2738%27 font-weight=%27700%27 fill=%27%23fbf5ea%27 text-anchor=%27middle%27%3EC%3C/text%3E%3C/svg%3E">
 <meta name="description" content="Restaurant Conchita: comida casera y ambiente 100% familiar en el centro de Ciudad Lerdo, Durango. Abierto todos los días de 8:00 a 16:00.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
@@ -152,6 +159,7 @@ footer .wrap.credit{display:block;margin-top:34px;padding-top:18px;font-size:.76
 
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.reveal{opacity:1;transform:none}}
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -305,8 +313,18 @@ const now=new Date(new Date().toLocaleString("en-US",{timeZone:"America/Monterre
 const hoy=now.getDay(), m=now.getHours()*60+now.getMinutes();
 const dias=document.getElementById("dias");
 [1,2,3,4,5,6,0].forEach(d=>{const c=d===hoy?' class="hoy"':'';dias.insertAdjacentHTML("beforeend",`<span${c}>${DIAS[d]}${d===hoy?" · hoy":""}</span><span${c}>8:00 – 16:00</span>`)});
-if(m>=480&&m<960){document.getElementById("dot").classList.add("on");document.getElementById("estado").textContent="Abierto ahora · cerramos a las 16:00";}
-else document.getElementById("estado").textContent=m<480?"Cerrado · abrimos hoy a las 8:00":"Cerrado · abrimos mañana a las 8:00";
+// Días que cierra: Viernes Santo, 25 de diciembre y 1 de enero
+function pascua(y){const a=y%19,b=Math.floor(y/100),c=y%100,d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25),g=Math.floor((b-f+1)/3),
+  h=(19*a+b-d-g+15)%30,i=Math.floor(c/4),k=c%4,l=(32+2*e+2*i-h-k)%7,mm=Math.floor((a+11*h+22*l)/451),
+  mes=Math.floor((h+l-7*mm+114)/31),dia=((h+l-7*mm+114)%31)+1;return new Date(y,mes-1,dia)}
+function festivo(dt){const mo=dt.getMonth(),d=dt.getDate();if((mo===11&&d===25)||(mo===0&&d===1))return true;
+  const vs=pascua(dt.getFullYear());vs.setDate(vs.getDate()-2);return vs.getMonth()===mo&&vs.getDate()===d}
+const manana=new Date(now);manana.setDate(manana.getDate()+1);
+const estado=document.getElementById("estado");
+if(festivo(now))estado.textContent="Hoy cerramos por día festivo";
+else if(m>=480&&m<960){document.getElementById("dot").classList.add("on");estado.textContent="Abierto ahora · cerramos a las 16:00";}
+else if(m<480)estado.textContent="Cerrado · abrimos hoy a las 8:00";
+else estado.textContent=festivo(manana)?"Cerrado · mañana descansamos por día festivo":"Cerrado · abrimos mañana a las 8:00";
 
 // Aparición al hacer scroll + contadores
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add("in");
