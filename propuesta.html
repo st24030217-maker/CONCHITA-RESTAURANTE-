@@ -368,7 +368,7 @@ a{color:inherit}
           <span class="eyebrow">Pieza 1</span>
           <h3>Página del restaurante</h3>
           <ul>
-            <li>Portada con el nombre en grande y fotos de la casona</li>
+            <li>Portada con su logo sobre una foto de la casona</li>
             <li>Favoritos de la casa: chilaquiles, café de olla, gorditas y más</li>
             <li>La historia de la casona: la fuente, los espejos y los relojes</li>
             <li>Mapa, horario y botones para llamar o llegar</li>
@@ -415,7 +415,7 @@ a{color:inherit}
     <div class="mesa">
       <div class="tent">
         <div class="cenefa" aria-hidden="true"></div>
-        <small>Restaurant</small>
+        <small>Tu Restaurant</small>
         <b>Conchita</b>
         <canvas id="qr" width="29" height="29" aria-label="Ejemplo de código QR"></canvas>
         <p>Escanea y ve nuestro menú</p>
@@ -545,12 +545,12 @@ try{
 
 // Código QR de ejemplo (decorativo)
 (function(){const c=$("#qr"),x=c.getContext("2d"),N=29;let s=7;const r=()=>(s=(s*16807)%2147483647)/2147483647;
-  x.fillStyle="#fffdf8";x.fillRect(0,0,N,N);x.fillStyle="#23160e";
-  const fin=(a,b)=>{x.fillRect(a,b,7,7);x.fillStyle="#fffdf8";x.fillRect(a+1,b+1,5,5);x.fillStyle="#23160e";x.fillRect(a+2,b+2,3,3)};
+  x.fillStyle="#ffffff";x.fillRect(0,0,N,N);x.fillStyle="#1b2620";
+  const fin=(a,b)=>{x.fillRect(a,b,7,7);x.fillStyle="#ffffff";x.fillRect(a+1,b+1,5,5);x.fillStyle="#1b2620";x.fillRect(a+2,b+2,3,3)};
   const zona=(i,j)=>(i<8&&j<8)||(i>N-9&&j<8)||(i<8&&j>N-9);
   for(let i=0;i<N;i++)for(let j=0;j<N;j++){if(zona(i,j))continue;if(r()>.52)x.fillRect(i,j,1,1)}
   fin(0,0);fin(N-7,0);fin(0,N-7);
-  x.fillStyle="#b4532a";x.fillRect(12,12,5,5);x.fillStyle="#fffdf8";x.fillRect(13,13,3,3);x.fillStyle="#b4532a";x.fillRect(14,14,1,1);
+  x.fillStyle="#04a04f";x.fillRect(12,12,5,5);x.fillStyle="#ffffff";x.fillRect(13,13,3,3);x.fillStyle="#04a04f";x.fillRect(14,14,1,1);
 })();
 </script>
 </body>
