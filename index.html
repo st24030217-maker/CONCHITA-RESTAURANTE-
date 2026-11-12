@@ -69,8 +69,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,18,13,.86) 0%,rgba(10,18,13,.62) 42%,rgba(10,18,13,.12) 100%)}
 .hero .wrap{position:relative;z-index:2;width:100%}
 .hero .contenido{max-width:560px}
-.logo-card{display:inline-block;background:#fff;border-radius:28px;padding:14px 22px;margin-bottom:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.7)}
-.logo-card img{width:min(380px,74vw);height:auto}
+.logo-card{display:inline-block;margin:0 0 18px -14px}
+.logo-card img{width:min(440px,80vw);height:auto;filter:drop-shadow(0 4px 14px rgba(0,0,0,.55)) drop-shadow(0 0 2px rgba(0,0,0,.4))}
 .lugar{display:inline-block;font-size:.8rem;font-weight:800;letter-spacing:.18em;text-transform:uppercase;color:var(--amarillo);margin-bottom:12px}
 .hero h2{font-size:clamp(2rem,4.4vw,3.2rem);max-width:15ch;text-shadow:0 4px 24px rgba(0,0,0,.35)}
 .hero h2 em{font-style:normal;color:#ff4b4c}
@@ -86,8 +86,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:7
 @media(max-width:860px){
   .hero{padding:32px 0 60px;align-items:flex-end}
   .hero::after{background:linear-gradient(180deg,rgba(10,18,13,.35) 0%,rgba(10,18,13,.7) 45%,rgba(10,18,13,.9) 100%)}
-  .logo-card{padding:10px 16px}
-  .logo-card img{width:min(290px,70vw)}
+  .logo-card{margin-left:-8px}
+  .logo-card img{width:min(320px,82vw)}
 }
 
 /* Cinta de fotos */
@@ -190,7 +190,7 @@ footer h4{font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:#9
   <div class="wrap">
     <div class="contenido">
       <h1 class="sr">Tu Restaurant Conchita</h1>
-      <div class="logo-card reveal"><img src="img/logo.png" alt="" width="424" height="240"></div><br>
+      <div class="logo-card reveal"><img src="img/logo-transparente.png" alt="" width="424" height="240"></div><br>
       <span class="lugar reveal d1">Cd. Lerdo, Durango · Más de 30 años</span>
       <h2 class="reveal d1">El sazón de casa, en el <em>centro de Lerdo</em>.</h2>
       <div class="franja reveal d2"></div>
