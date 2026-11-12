@@ -3,112 +3,114 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Menú · Tu Restaurant Conchita</title>
-<meta name="theme-color" content="#04a04f">
+<title>Menú · Restaurant Conchita</title>
+<meta name="theme-color" content="#b4532a">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
-<meta property="og:site_name" content="Tu Restaurant Conchita">
-<meta property="og:title" content="Menú · Tu Restaurant Conchita">
+<meta property="og:site_name" content="Restaurant Conchita">
+<meta property="og:title" content="Menú · Restaurant Conchita">
 <meta property="og:description" content="Desayunos, antojitos, comidas caseras y bebidas. Busca tu platillo favorito.">
-<meta property="og:image" content="img/logo-original.png">
-<link rel="icon" href="img/flores.png">
-<meta name="description" content="Menú digital de Tu Restaurant Conchita, Cd. Lerdo, Durango.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%23b4532a%27/%3E%3Ctext x=%2732%27 y=%2745%27 font-family=%27Georgia,serif%27 font-size=%2738%27 font-weight=%27700%27 fill=%27%23fbf5ea%27 text-anchor=%27middle%27%3EC%3C/text%3E%3C/svg%3E">
+<meta name="description" content="Menú digital de Restaurant Conchita, Cd. Lerdo, Durango.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
-:root{--verde:#04a04f;--verde-dk:#067a3c;--verde-bg:#e9f6ee;--rojo:#e32425;--rojo-dk:#b81b1f;--naranja:#d9661a;--blanco:#fff;--crema:#fbf8f2;--tinta:#1b2620;--gris:#5c665f;--linea:#e6e1d6;
-  --franja:linear-gradient(90deg,var(--verde) 0%,var(--verde) 22%,#fff 50%,var(--rojo) 78%,var(--rojo) 100%);--calido:linear-gradient(135deg,#f4d9a6,#d9783a)}
+:root{--terracota:#b4532a;--terracota-dk:#8e3c1b;--crema:#fbf5ea;--arena:#f1e4cc;--tinta:#2a1d14;--gris:#6b5b4e;--verde:#3d6b3a;--calido:linear-gradient(135deg,#e9b778,#b4532a)}
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:'Nunito',system-ui,sans-serif;background:var(--blanco);color:var(--tinta);line-height:1.5;-webkit-tap-highlight-color:transparent}
-h1,h2,h3{font-weight:900;line-height:1.12}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--crema);color:var(--tinta);line-height:1.5;-webkit-tap-highlight-color:transparent}
+h1,h2,h3{font-family:'Fraunces',Georgia,serif;line-height:1.12}
 .wrap{max-width:720px;margin:0 auto;padding:0 18px}
 .foto{background-image:var(--img),var(--calido);background-size:cover;background-position:center}
-.franja-top{height:6px;background:var(--franja)}
 
-/* Encabezado con logo */
-.portada{position:relative;padding:16px 0 18px;text-align:center;background:#fff}
-.portada a.back{position:absolute;top:14px;left:16px;color:var(--verde-dk);text-decoration:none;font-size:.88rem;font-weight:800;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--linea)}
-.portada img{width:min(270px,64vw);height:auto;margin:22px auto 4px;display:block}
-.portada h1{font-size:1.5rem;letter-spacing:.02em}
-.portada .sub{color:var(--gris);font-weight:700;font-size:.92rem}
-.estado{display:inline-flex;align-items:center;gap:8px;margin-top:12px;font-size:.88rem;font-weight:700;padding:7px 14px;border-radius:999px;background:#fff;border:1px solid var(--linea)}
-.dot{width:9px;height:9px;border-radius:50%;background:#b9b9b9}.dot.on{background:var(--verde);animation:pulse 2s infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(4,160,79,.55)}100%{box-shadow:0 0 0 10px rgba(4,160,79,0)}}
+/* Portada */
+.portada{position:relative;height:360px;color:#fff;overflow:hidden;display:flex;align-items:flex-end}
+.portada .bg{position:absolute;inset:-5%;animation:kb 20s ease-in-out infinite alternate}
+.portada::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(20,12,6,.35),rgba(20,12,6,.1) 40%,rgba(20,12,6,.75))}
+.portada .wrap{position:relative;z-index:2;width:100%;padding-bottom:26px}
+.portada a.back{position:absolute;top:calc(14px + env(safe-area-inset-top));left:16px;z-index:3;color:#fff;text-decoration:none;font-size:.85rem;padding:7px 14px;border-radius:999px;background:rgba(255,255,255,.18);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.portada .sub{font-size:.8rem;letter-spacing:.4em;text-transform:uppercase;font-weight:700;color:#f6d3a8;margin-left:3px}
+.portada h1{font-size:clamp(3.6rem,15vw,5.2rem);line-height:.95;letter-spacing:-.02em;text-shadow:0 6px 30px rgba(0,0,0,.35)}
+.portada .menu-lbl{font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:#f6c48f;margin-top:4px}
+.estado{display:inline-flex;align-items:center;gap:8px;margin-top:10px;font-size:.84rem;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.dot{width:8px;height:8px;border-radius:50%;background:#bbb}.dot.on{background:#3ccf62;animation:pulse 2s infinite}
+@keyframes kb{to{transform:scale(1.12) translate(-1.5%,-1%)}}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(60,207,98,.6)}100%{box-shadow:0 0 0 10px rgba(60,207,98,0)}}
 
 /* Buscador + pestañas */
-.sticky{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.97);padding:12px 0 10px;border-bottom:1px solid var(--linea)}
-.search input{width:100%;padding:13px 18px;border-radius:16px;border:2px solid var(--linea);background:var(--crema);font:inherit;font-size:1rem;font-weight:600;outline:none;transition:border-color .2s,background .2s}
-.search input:focus{background:#fff;border-color:var(--verde)}
+.sticky{position:sticky;top:0;z-index:20;background:rgba(251,245,234,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);padding:12px 0 10px}
+.search input{width:100%;padding:13px 18px;border-radius:16px;border:0;background:rgba(42,29,20,.06);font:inherit;font-size:1rem;outline:none;transition:background .2s,box-shadow .2s}
+.search input:focus{background:#fff;box-shadow:0 8px 24px -12px rgba(90,40,10,.4)}
 .tabs{position:relative;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;margin-top:10px;padding:2px 0}
 .tabs::-webkit-scrollbar{display:none}
-.pill{position:absolute;top:2px;height:calc(100% - 4px);border-radius:999px;background:var(--verde);transition:left .35s cubic-bezier(.2,.7,.2,1),width .35s cubic-bezier(.2,.7,.2,1);z-index:0}
-.tab{position:relative;z-index:1;flex:none;border:0;background:transparent;color:var(--gris);padding:8px 16px;border-radius:999px;font:inherit;font-weight:800;font-size:.93rem;cursor:pointer;white-space:nowrap;transition:color .3s}
+.pill{position:absolute;top:2px;height:calc(100% - 4px);border-radius:999px;background:var(--terracota);transition:left .35s cubic-bezier(.2,.7,.2,1),width .35s cubic-bezier(.2,.7,.2,1);z-index:0}
+.tab{position:relative;z-index:1;flex:none;border:0;background:transparent;color:var(--gris);padding:8px 16px;border-radius:999px;font:inherit;font-weight:500;font-size:.92rem;cursor:pointer;white-space:nowrap;transition:color .3s}
 .tab.active{color:#fff}
 
 /* Categorías */
-.cat{padding-top:24px;scroll-margin-top:132px}
+.cat{padding-top:22px;scroll-margin-top:118px}
 .banner{position:relative;height:120px;border-radius:22px;overflow:hidden;display:flex;align-items:flex-end;color:#fff;margin-bottom:6px}
 .banner .foto{position:absolute;inset:0;transition:transform 1.2s cubic-bezier(.2,.7,.2,1)}
 .banner.in .foto{transform:scale(1.06)}
-.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(10,20,14,.75),rgba(10,20,14,.05))}
-.banner::before{content:"";position:absolute;left:0;right:0;bottom:0;height:5px;background:var(--franja);z-index:2}
-.banner div{position:relative;z-index:1;padding:16px 20px 20px}
+.banner::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(20,12,6,.7),rgba(20,12,6,.1))}
+.banner div{position:relative;z-index:1;padding:16px 20px}
 .banner h2{font-size:1.7rem}
-.banner small{font-size:.86rem;font-weight:700;opacity:.92}
+.banner small{font-size:.82rem;opacity:.9}
 
 .item{display:flex;gap:14px;align-items:center;padding:14px 12px;margin:0 -12px;border-radius:18px;cursor:pointer;transition:background .25s,opacity .6s,transform .6s cubic-bezier(.2,.7,.2,1);opacity:0;transform:translateY(18px)}
 .item.in{opacity:1;transform:none}
-.item:hover{background:var(--crema)}
+.item:hover{background:rgba(255,255,255,.7)}
 .item:active{transform:scale(.985)}
-.thumb{flex:none;width:76px;height:76px;border-radius:16px;overflow:hidden;background:var(--crema)}
+.thumb{flex:none;width:76px;height:76px;border-radius:16px;overflow:hidden;background:var(--arena)}
 .thumb img{width:100%;height:100%;object-fit:cover;display:block}
 .item .txt{flex:1;min-width:0}
 .item .top{display:flex;justify-content:space-between;gap:10px;align-items:baseline}
-.item h3{font-size:1.05rem;font-weight:800}
-.price{font-weight:900;color:var(--rojo);white-space:nowrap}
-.item p{color:var(--gris);font-size:.9rem;margin-top:2px}
+.item h3{font-family:'DM Sans';font-size:1.05rem;font-weight:700}
+.price{font-weight:700;color:var(--terracota);white-space:nowrap}
+.item p{color:var(--gris);font-size:.88rem;margin-top:2px}
 .chips{display:flex;gap:6px;margin-top:6px;flex-wrap:wrap}
-.chip{font-size:.7rem;font-weight:800;padding:3px 9px;border-radius:999px}
-.chip.fav{background:rgba(227,36,37,.1);color:var(--rojo-dk)}
-.chip.veg{background:var(--verde-bg);color:var(--verde-dk)}
-.chip.pic{background:rgba(217,102,26,.12);color:#a84a0f}
+.chip{font-size:.68rem;font-weight:700;padding:3px 9px;border-radius:999px}
+.chip.fav{background:rgba(180,83,42,.12);color:var(--terracota-dk)}
+.chip.veg{background:rgba(61,107,58,.12);color:var(--verde)}
+.chip.pic{background:rgba(192,57,43,.12);color:#a83222}
 .empty{text-align:center;color:var(--gris);padding:40px 0;display:none}
-.aviso{margin:26px 0 0;padding:14px 16px;border-radius:16px;background:var(--crema);border:1px solid var(--linea);font-size:.84rem;color:var(--gris)}
-footer{text-align:center;padding:28px 0 120px;font-size:.86rem;color:var(--gris)}
-footer a{color:var(--verde-dk);font-weight:700}
+.aviso{margin:26px 0 0;padding:14px 16px;border-radius:16px;background:rgba(42,29,20,.05);font-size:.82rem;color:var(--gris)}
+footer{text-align:center;padding:28px 0 120px;font-size:.82rem;color:var(--gris)}
+footer a{color:var(--terracota)}
 
 /* Ficha del platillo */
-.sheet-bg{position:fixed;inset:0;background:rgba(10,20,14,.4);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
-.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-width:720px;margin:0 auto;background:#fff;border-radius:28px 28px 0 0;transform:translateY(105%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s;padding:10px 18px calc(22px + env(safe-area-inset-bottom));box-shadow:0 -20px 40px -20px rgba(0,0,0,.3)}
+.sheet-bg{position:fixed;inset:0;background:rgba(20,12,6,.35);backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px);opacity:0;pointer-events:none;transition:opacity .3s;z-index:40}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:41;max-width:720px;margin:0 auto;background:rgba(251,245,234,.92);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-radius:28px 28px 0 0;transform:translateY(105%);visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),visibility 0s .45s;padding:10px 18px calc(22px + env(safe-area-inset-bottom))}
 .open .sheet-bg{opacity:1;pointer-events:auto}.open .sheet{transform:none;visibility:visible;transition:transform .45s cubic-bezier(.2,.8,.2,1)}
-.grab{width:44px;height:5px;border-radius:9px;background:var(--linea);margin:0 auto 14px}
+.grab{width:44px;height:5px;border-radius:9px;background:rgba(42,29,20,.18);margin:0 auto 14px}
 .sheet .hero{height:220px;border-radius:20px;margin-bottom:16px}
 .sheet h3{font-size:1.6rem}
-.sheet .price{font-size:1.3rem}
+.sheet .price{font-size:1.25rem}
 .sheet p{color:var(--gris);margin:10px 0 18px}
-.cerrar{width:100%;padding:14px;border:0;border-radius:999px;background:var(--verde);color:#fff;font:inherit;font-weight:800;cursor:pointer}
+.cerrar{width:100%;padding:14px;border:0;border-radius:999px;background:var(--terracota);color:#fff;font:inherit;font-weight:700;cursor:pointer}
 
-.fab{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:30;display:flex;gap:4px;padding:5px;border-radius:999px;background:#fff;box-shadow:0 14px 34px -10px rgba(0,0,0,.35);animation:up .6s .4s both cubic-bezier(.2,.7,.2,1)}
-.fab a{white-space:nowrap;color:var(--verde-dk);text-decoration:none;font-size:.9rem;font-weight:800;padding:11px 18px;border-radius:999px;background:var(--verde-bg)}
-.fab a.pri{background:var(--rojo);color:#fff}
+.fab{position:fixed;bottom:calc(14px + env(safe-area-inset-bottom));left:50%;transform:translateX(-50%);z-index:30;display:flex;gap:4px;padding:5px;border-radius:999px;background:rgba(42,29,20,.6);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);animation:up .6s .4s both cubic-bezier(.2,.7,.2,1)}
+.fab a{white-space:nowrap;color:#fff;text-decoration:none;font-size:.86rem;font-weight:700;padding:11px 18px;border-radius:999px}
+.fab a.pri{background:var(--terracota)}
 @keyframes up{from{opacity:0;transform:translate(-50%,30px)}}
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.item{opacity:1;transform:none}}
 </style>
 </head>
 <body>
 
-<div class="franja-top"></div>
 <header class="portada">
+  <div class="bg foto" data-foto="fachada"></div>
   <a href="index.html" class="back">← Inicio</a>
-  <img src="img/logo.png" alt="Tu Restaurant Conchita" width="424" height="240">
-  <h1>Menú</h1>
-  <div class="sub">Cd. Lerdo, Durango</div>
-  <div class="estado"><span class="dot" id="dot"></span><span id="estado">Todos los días · 8:00 a 16:00</span></div>
+  <div class="wrap">
+    <div class="sub">Restaurant</div>
+    <h1>Conchita</h1>
+    <div class="menu-lbl">Menú · Cd. Lerdo, Durango</div>
+    <div class="estado"><span class="dot" id="dot"></span><span id="estado">Todos los días · 8:00 a 16:00</span></div>
+  </div>
 </header>
 
 <div class="sticky">
   <div class="wrap">
-    <div class="search"><input id="q" type="search" placeholder="Buscar platillo… (ej. chilaquiles)" autocomplete="off" aria-label="Buscar platillo"></div>
+    <div class="search"><input id="q" type="search" placeholder="Buscar platillo… (ej. chilaquiles)" autocomplete="off"></div>
     <div class="tabs" id="tabs"><span class="pill" id="pill"></span></div>
   </div>
 </div>
@@ -122,7 +124,7 @@ footer a{color:var(--verde-dk);font-weight:700}
 <footer class="wrap">
   López Rayón 13 Pte, esq. Fco. Sarabia · Zona Centro, Cd. Lerdo<br>
   <a href="tel:+528717252265">871 725 2265</a> · <a href="https://www.facebook.com/share/1SdGsiu9mm/" target="_blank" rel="noopener">Facebook</a><br>Solo cerramos Viernes Santo, 25 dic y 1 ene
-  <div style="margin-top:14px;font-size:.72rem;letter-spacing:.24em;text-transform:uppercase">Powered by <b style="color:var(--verde-dk);letter-spacing:.18em">SSS.SOLUTIONS</b></div>
+  <div style="margin-top:14px;font-size:.7rem;letter-spacing:.24em;text-transform:uppercase">Powered by <b style="color:var(--terracota);letter-spacing:.18em">SSS.SOLUTIONS</b></div>
 </footer>
 
 <div class="fab">
