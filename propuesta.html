@@ -3,25 +3,26 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Propuesta Restaurant Conchita</title>
-<meta name="theme-color" content="#b4532a">
+<title>Propuesta Tu Restaurant Conchita</title>
+<meta name="theme-color" content="#04a04f">
 <meta property="og:type" content="website">
 <meta property="og:locale" content="es_MX">
-<meta property="og:site_name" content="Restaurant Conchita">
-<meta property="og:title" content="Propuesta · Restaurant Conchita">
+<meta property="og:site_name" content="Tu Restaurant Conchita">
+<meta property="og:title" content="Propuesta · Tu Restaurant Conchita">
 <meta property="og:description" content="Propuesta de página web y menú digital para Restaurant Conchita, Cd. Lerdo.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 64 64%27%3E%3Crect width=%2764%27 height=%2764%27 rx=%2716%27 fill=%27%23b4532a%27/%3E%3Ctext x=%2732%27 y=%2745%27 font-family=%27Georgia,serif%27 font-size=%2738%27 font-weight=%27700%27 fill=%27%23fbf5ea%27 text-anchor=%27middle%27%3EC%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="img/flores.png">
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,800;1,9..144,400;1,9..144,600&family=DM+Sans:wght@400;500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&display=swap">
 <style>
 /* Layout: carta de presentación en bandas — noche de casona (tinta), papel, azul talavera — con un celular vivo como pieza central */
 :root{
-  --tinta:#23160e; --tinta-2:#36241a; --papel:#fbf4e6; --papel-2:#f3e6cd;
-  --terracota:#b4532a; --barro:#8e3c1b; --talavera:#1d4a86; --talavera-2:#163a6b;
-  --oro:#f1bd73; --gris:#6e5c4f; --blanco:#fffdf8; --verde:#3f8f4f;
-  --display:'Fraunces',Georgia,'Times New Roman',serif;
-  --body:'DM Sans',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --tinta:#1b2620; --tinta-2:#26342b; --papel:#fbf8f2; --papel-2:#f1ece2;
+  --terracota:#e32425; --barro:#b81b1f; --talavera:#067a3c; --talavera-2:#04a04f;
+  --oro:#f7c600; --gris:#5c665f; --blanco:#ffffff; --verde:#04a04f;
+  --franja:linear-gradient(90deg,#04a04f 0%,#04a04f 22%,#fff 50%,#e32425 78%,#e32425 100%);
+  --display:'Nunito',system-ui,sans-serif;
+  --body:'Nunito',system-ui,-apple-system,'Segoe UI',sans-serif;
   color-scheme:light;
 }
 *{box-sizing:border-box}
@@ -34,8 +35,10 @@ a{color:inherit}
 :focus-visible{outline:3px solid var(--oro);outline-offset:3px;border-radius:6px}
 
 /* Cenefa de talavera */
-.cenefa{height:30px;background-color:var(--blanco);background-size:30px 30px;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3E%3Crect width='30' height='30' fill='%23fffdf8'/%3E%3Cpath d='M15 3 L19 11 L27 15 L19 19 L15 27 L11 19 L3 15 L11 11Z' fill='%231d4a86'/%3E%3Ccircle cx='15' cy='15' r='3' fill='%23f1bd73'/%3E%3Cpath d='M0 0h5v5H0zM25 0h5v5h-5zM0 25h5v5H0zM25 25h5v5h-5z' fill='%231d4a86' opacity='.55'/%3E%3C/svg%3E")}
+.cenefa{height:10px;background:var(--franja)}
+.logo-card{display:inline-block;background:#fff;border-radius:28px;padding:18px 24px;margin:18px 0 22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.6)}
+.logo-card img{display:block;width:min(400px,70vw);height:auto}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* Botones */
 .btn{display:inline-flex;align-items:center;gap:8px;padding:13px 22px;border-radius:999px;font-weight:700;font-size:.95rem;text-decoration:none;border:0;cursor:pointer;font-family:var(--body);transition:transform .2s,background .2s}
@@ -47,8 +50,8 @@ a{color:inherit}
 /* ===== Portada ===== */
 .portada{background:var(--tinta);color:var(--papel);position:relative;overflow:hidden}
 .portada::before{content:"";position:absolute;inset:0;background:
-  radial-gradient(60% 70% at 85% 40%,rgba(180,83,42,.35),transparent 70%),
-  radial-gradient(40% 50% at 10% 100%,rgba(29,74,134,.35),transparent 70%)}
+  radial-gradient(60% 70% at 85% 40%,rgba(4,160,79,.32),transparent 70%),
+  radial-gradient(40% 50% at 10% 100%,rgba(227,36,37,.28),transparent 70%)}
 .portada .wrap{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding-block:64px 72px}
 .portada .eyebrow{color:var(--oro)}
 .nombre{margin:18px 0 22px;font-weight:800;font-size:clamp(4.4rem,13vw,9.6rem);letter-spacing:-.035em;line-height:.86}
@@ -103,7 +106,7 @@ a{color:inherit}
 .mantel{display:grid;place-items:center;background:var(--papel-2)}
 
 /* Vista: inicio */
-.mh{position:relative;flex:1;background:linear-gradient(160deg,#e3a866,#b4532a 55%,#5b2a14);color:var(--blanco);padding:44px 16px 16px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
+.mh{position:relative;flex:1;background:linear-gradient(160deg,#36c46f,#04a04f 50%,#055a2c);color:var(--blanco);padding:44px 16px 16px;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden}
 .mh .plate{position:absolute;width:170px;right:-40px;top:40px;opacity:.95}
 .mh .navm{position:absolute;top:40px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:center;font-family:var(--display);font-weight:800;font-size:13px}
 .mh .navm span{font-family:var(--body);font-size:9px;font-weight:700;background:var(--terracota);padding:5px 10px;border-radius:99px}
@@ -145,7 +148,7 @@ a{color:inherit}
 .mi p{font-size:9.5px;color:var(--gris);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .chips{display:flex;gap:4px;margin-top:3px;flex-wrap:wrap}
 .chip{font-size:8px;font-weight:700;padding:2px 7px;border-radius:99px}
-.chip.fav{background:rgba(180,83,42,.13);color:var(--barro)}
+.chip.fav{background:rgba(227,36,37,.1);color:var(--barro)}
 .chip.veg{background:rgba(63,143,79,.14);color:#2f6b3b}
 .chip.pic{background:rgba(192,57,43,.13);color:#a83222}
 .mvacio{text-align:center;color:var(--gris);padding:24px 8px;font-size:10px}
@@ -230,7 +233,7 @@ a{color:inherit}
 
 /* Cierre */
 .cierre{background:var(--tinta);color:var(--papel);text-align:center;padding-block:100px 90px;position:relative;overflow:hidden}
-.cierre::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(180,83,42,.4),transparent 70%)}
+.cierre::before{content:"";position:absolute;inset:0;background:radial-gradient(50% 60% at 50% 100%,rgba(4,160,79,.35),transparent 70%)}
 .cierre .wrap{position:relative}
 .cierre .eyebrow{color:var(--oro)}
 .cierre h2{font-size:clamp(2.2rem,6vw,4.2rem);font-weight:800;letter-spacing:-.02em;margin:16px auto 0;max-width:14em}
@@ -266,7 +269,8 @@ a{color:inherit}
   <div class="wrap">
     <div>
       <div class="eyebrow entra">Propuesta de página web y menú digital</div>
-      <h1 class="nombre entra e2"><small>Restaurant</small>Conchita</h1>
+      <h1 class="sr">Tu Restaurant Conchita</h1>
+      <div class="logo-card entra e2"><img src="img/logo.png" alt="Tu Restaurant Conchita" width="424" height="240"></div>
       <p class="lema entra e3">Más de 30 años de sazón casero en una casona del centro de Lerdo. Esta propuesta es para que sus clientes vean el menú, el horario y la dirección desde el celular.</p>
       <div class="vivo entra e4" aria-live="polite"><span class="dot" id="dot"></span><span id="vivo">Abierto todos los días · 8:00 a 16:00</span></div>
       <div class="cta entra e4">
@@ -439,7 +443,7 @@ a{color:inherit}
       <ul>
         <li>El menú con los precios actuales</li>
         <li>Permiso para tomar fotos, o las que ya tengan</li>
-        <li>Su logotipo, si cuentan con uno</li>
+        <li>Su logotipo en buena calidad (PDF o PNG grande)</li>
         <li>Confirmar el horario y los días que cierran</li>
       </ul>
     </div>
